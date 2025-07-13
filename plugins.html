@@ -1,0 +1,40 @@
+<script>
+  import Vue from 'vue';
+
+  const RulesPlugin = (Vue) => {
+    Vue.mixin({
+      create() {
+        if (this.$options.rules) {
+          // ... do something if `rules` object exists, eg: ...
+          Object.keys(this.$options.rules).forEach((key) => {
+            const rule = this.$options.rules[key];
+
+            this.$watch((key, newValue) => {
+              const result = rule.validate(newValue); // validate the value
+
+              if (!result) {
+                console.log(rule.message); // if false value, then show message in console
+              }
+            });
+          });
+        }
+      }
+    });
+  };
+
+  Vue.use(RulesPlugin);
+
+  // How to use this plugin:
+
+  const vueInstance = new Vue({
+    data: { foo: 10 },
+    rules: {
+      foo: {
+        validate: value => value > 1,
+        message: "foo must be greater than 1"
+      },
+    },
+  });
+
+  vueInstance.foo = 0; // will show error message in console because foo should be greater than 1
+</script>
