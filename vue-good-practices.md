@@ -4,6 +4,20 @@
 
 Thinking about put some good practice codes in here ~
 
+### Embrace Vue 3 Composition API
+
+```js
+<script setup>
+  {/* 
+    instead of using setup() {
+      return { ... };
+    }
+
+    directly using setup please ~
+  */}
+</script>
+```
+
 ### Use `shallowRef` and `shallowReactive` for Performance
 
 ```js

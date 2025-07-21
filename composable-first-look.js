@@ -54,3 +54,21 @@ function myOwnComposeable(text) {
     word // so now, we cannot access word.value because unref() will return the primitive type value
   }
 }
+
+// Another good example in real life ~
+
+import { ref, computed, readonly } from 'vue';
+
+export function useCounter(initialValue = 0) {
+  const count = ref(initialValue);
+
+  const doubleCount = computed(() => count.value * 2);
+
+  const isEven = computed(() => count.value % 2 === 0);
+
+  return {
+    count: readonly(count), // consumers can only read it cannot mutate the count value directly
+    doubleCount,
+    isEven
+  }
+}
