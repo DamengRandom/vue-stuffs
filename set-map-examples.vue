@@ -1,5 +1,4 @@
 <!-- Set example -->
-
 <!-- 1. Unique tags  -->
 <script setup>
   const tags = ref(new Set());
@@ -31,7 +30,6 @@
 
 
 <!-- Map example -->
-
 <!-- 1. Tab Management -->
 <template>
   <div>
